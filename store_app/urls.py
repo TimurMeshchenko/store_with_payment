@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from store_app.views import CatalogView
+from store_app.views import CatalogView, BasketView, get_product
 
 urlpatterns = [
     path('', CatalogView.as_view(), name='catalog'),
+    path('basket/', BasketView.as_view(), name='basket'),
+    path('api/get_product', get_product, name='get_product'),
 ]

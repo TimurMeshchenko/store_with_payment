@@ -75,9 +75,13 @@ WSGI_APPLICATION = 'store.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "store_with_payment",
+        "USER": "postgres",
+        "PASSWORD": "Qewads",
+        "HOST": "localhost",
+        'PORT': 5432,
     }
 }
 
@@ -124,3 +128,5 @@ MEDIA_ROOT = Path(BASE_DIR) / "store_app" / "media"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STRIPE_SECRET_KEY = 'sk_test_51OWxceHpvpTxUukx6WPFwPRqKtn3VQp4FjrlNJ894I0m7ZaUd7CIa0mGcs03QIJj0xOBOoaSiK9ld8intHIAQzjt00b6YtCeMw'

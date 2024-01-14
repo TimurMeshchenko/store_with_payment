@@ -16,17 +16,31 @@
     <meta name="wmail-verification" content="e08a4d66746555c8641fe953d12262c8">
     <meta name="apple-itunes-app" content="app-id=597880187">
 
+    <link rel="icon" href="/media/favicon.ico">
+
     <link href="{% static 'css/main-v3.min.716ab6e5b2568b3a.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/common.min.121bb7180e1b90be.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/main-page-v3.min.7309e6f7f633c75b.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/popups/productCardPopup.min.6ca2574b943416d5.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/popups/productSelectionManager.min.2f97c2d2117bb281.css' %}" rel="stylesheet"
-        type="text/css">
-    <div class="wrapper">
+    <link href="{% static 'css/popups/productSelectionManager.min.2f97c2d2117bb281.css' %}" rel="stylesheet" type="text/css">
 
+    {% block css %}
+    {% endblock %}
+
+    {% block title %}
+    <title>Каталог</title>
+    {% endblock %}
+    </head>
+    <body>
+    <div class="wrapper">
         <header class="header j-header header--custom-bg" style="background-image:url();">
             <div class="header__container">
                 <div class="header__bottom">
+                    <div class="header__nav-element nav-element">
+                        <a class="nav-element__logo j-wba-header-item" data-wba-header-name="Main" href="/" style="width: 58px;height: 50px;">
+                            <svg width="100%" zoomAndPan="magnify" viewBox="0 0 810 809.999993" height="100%" preserveAspectRatio="xMidYMid meet" version="1.0"><defs><clipPath id="id1"><path d="M 258 268 L 576 268 L 576 618.191406 L 258 618.191406 Z M 258 268 " clip-rule="nonzero"/></clipPath><clipPath id="id2"><path d="M 190.929688 191.441406 L 642.429688 191.441406 L 642.429688 418 L 190.929688 418 Z M 190.929688 191.441406 " clip-rule="nonzero"/></clipPath></defs><g clip-path="url(#id1)"><path fill="rgb(0%, 0%, 0%)" d="M 575.1875 408.367188 Z M 575.1875 408.367188 L 416.726562 268.1875 L 258.171875 408.421875 L 258.171875 608.804688 C 258.171875 613.980469 262.359375 618.132812 267.539062 618.132812 L 366.628906 618.132812 L 366.628906 530.273438 C 366.628906 525.097656 370.785156 520.917969 375.964844 520.917969 L 457.386719 520.917969 C 462.566406 520.917969 466.722656 525.097656 466.722656 530.273438 L 466.722656 618.132812 L 565.839844 618.132812 C 571.023438 618.132812 575.179688 613.980469 575.179688 608.804688 L 575.179688 408.355469 Z M 258.171875 408.425781 Z M 258.171875 408.425781 " fill-opacity="1" fill-rule="nonzero"/></g><g clip-path="url(#id2)"><path fill="rgb(0%, 0%, 0%)" d="M 415.804688 191.476562 L 190.929688 390.359375 L 214.617188 417.054688 L 416.726562 238.292969 L 618.785156 417.054688 L 642.429688 390.359375 L 417.601562 191.476562 L 416.730469 192.484375 L 415.808594 191.476562 Z M 415.804688 191.476562 " fill-opacity="1" fill-rule="nonzero"/></g><path fill="rgb(0%, 0%, 0%)" d="M 258.171875 220.105469 L 315.179688 220.105469 L 314.679688 253.832031 L 258.171875 304.824219 Z M 258.171875 220.105469 " fill-opacity="1" fill-rule="nonzero"/></svg>
+                        </a>
+                    </div>
                     <div id="searchBlock" class="header__search-catalog search-catalog j-search-catalog" data-link="
          {on &#39;click&#39; &#39;.j-suggest&#39; followSuggest}
          {on &#39;click&#39; &#39;.j-suggest-tag&#39; fillWithTag}
@@ -59,9 +73,9 @@
                         <script type="jsv#57^"></script>
                         <script type="jsv#87_"></script>
                         <div class="navbar-pc__item j-item-basket"> <a class="navbar-pc__link j-wba-header-item"
-                                data-wba-header-name="Cart" href="https://www.wildberries.ru/lk/basket"> <span
+                                data-wba-header-name="Cart" href="{% url 'basket' %}"> <span
                                     class="navbar-pc__icon navbar-pc__icon--basket"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="26" height="24" fill="black">
+                                        width="26" height="24" fill="black">
                                         <path fill-rule="evenodd"
                                             d="M9.522 14.866a1 1 0 0 0 1.1.653l12.766-2.036a1 1 0 0 0 .823-.792l1.355-6.792a1 1 0 0 0-.964-1.196l-17.36-.28a1 1 0 0 0-.958 1.335l3.238 9.108ZM10.326 23.052a2.326 2.326 0 1 0 0-4.652 2.326 2.326 0 0 0 0 4.652ZM21.957 23.052a2.326 2.326 0 1 0 0-4.652 2.326 2.326 0 0 0 0 4.652Z"
                                             clip-rule="evenodd" />
@@ -70,7 +84,7 @@
                                     </svg>
                                     <script type="jsv#60^"></script>
                                     <script type="jsv#89_"></script><span class="navbar-pc__notify">
-                                        <script type="jsv#59^"></script>0
+                                        <script type="jsv#59^"></script>
                                         <script type="jsv/59^"></script>
                                     </span>
                                     <script type="jsv/89_"></script>
@@ -83,6 +97,7 @@
 
             </div>
         </header>
+        {% block body %}
         <main class="main left-bg" role="main" id="body-layout">
             <div class="lk-menu">
                 <div class="lk-menu__container j-lk-menu-top hide">
@@ -284,25 +299,6 @@
                         <div class="main-page">
                             <script type="jsv#2^"></script>
                             <script type="jsv/2^"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                             <div class="main-page__content-wrapper">
                                 <script type="jsv#3^"></script>
                                 <script type="jsv#116_"></script>
@@ -347,6 +343,9 @@
                                     <script type="jsv#122_"></script>
                                     <script type="jsv#91^"></script>
                                     <script type="jsv#123_"></script>
+                                    <script src="{% static 'js/catalog_basket.js' %}"></script>
+
+                                    {% for product in products %}
                                     <article data-nm-id="113035977" data-popup-nm-id="113035977" data-index="0"
                                         data-analitics-code="MCS" data-target-url="MI"
                                         class="main-page__product product-card j-product-item product-card--hoverable j-content-item"
@@ -355,75 +354,60 @@
                                         <div class="product-card__wrapper">
                                             <div class="product-card__top-wrap">
                                                 <script type="jsv#126_"></script>
-                                                <script type="jsv#127_"></script> <button
-                                                    class="product-card__heart j-add-to-postpone"
-                                                    data-link="class{merge:addedToPoned toggle=&#39;active&#39;}"
-                                                    type="button" aria-label="Добавить в избранное"></button>
+                                                <script type="jsv#127_"></script>
                                                 <script type="jsv/127_"></script>
                                                 <script type="jsv/126_"></script>
                                                 <div class="product-card__tips product-card__tips--top"> </div>
                                                 <script type="jsv#128_"></script>
                                                 <div class="product-card__img-wrap img-plug j-thumbnail-wrap"
                                                     data-plug-text="Фото отсутствует"> <img class="j-thumbnail"
-                                                        loading="lazy" width="516" height="688" src='/media/1.webp'
-                                                        alt="Гель для душа увлажняющий парфюмированный SUPER FOOD 750 мл MIXIT">
+                                                        loading="lazy" width="516" height="688" src='{{ product.image.url }}'
+                                                        >
                                                 </div>
                                                 <script type="jsv/128_"></script>
-                                                <button class="product-card__fast-view hide-mobile j-open-product-popup"
-                                                    type="button">Быстрый просмотр</button>
                                                 <script type="jsv/132_"></script>
-                                                <p class="product-card__adults">Товары для взрослых</p>
                                             </div>
                                             <div class="product-card__middle-wrap">
                                                 <script type="jsv#133_"></script>
                                                 <p class="product-card__price price"> <span class="price__wrap">
                                                         <script type="jsv#134_"></script> <ins
-                                                            class="price__lower-price"> 249&nbsp;₽ </ins>
-                                                        <del>833&nbsp;₽</del>
+                                                            class="price__lower-price"> {{ product.price|floatformat:0 }}&nbsp;₽ </ins>
                                                         <script type="jsv/134_"></script>
                                                     </span> </p>
                                                 <script type="jsv/133_"></script>
                                                 <h2 class="product-card__brand-wrap product-card__brand-wrap--no-wrap">
-                                                    <span class="product-card__brand">MIXIT</span> <span
-                                                        class="product-card__name"><span class=""> / </span>Гель для
-                                                        душа увлажняющий парфюмированный SUPER FOOD 750 мл</span>
+                                                    <span
+                                                        >{{ product.name }}</span>
                                                 </h2>
                                             </div>
                                             <script type="jsv#136_"></script>
                                             <div class="product-card__bottom-wrap">
                                                 <script type="jsv#137_"></script>
-                                                <p class="product-card__rating-wrap">
-                                                    <script type="jsv#138_"></script> <span
-                                                        class="address-rate-mini address-rate-mini--sm">4.8</span> <span
-                                                        class="product-card__count">45&nbsp;625 оценок</span>
-                                                    <script type="jsv/138_"></script>
-                                                </p>
                                                 <script type="jsv/137_"></script>
                                                 <script type="jsv#139_"></script>
                                                 <p class="product-card__sizes j-sizes"></p>
                                                 <script type="jsv/139_"></script>
                                                 <script type="jsv#140_"></script>
                                                 <p class="product-card__order-wrap">
-                                                    <script type="jsv#141_"></script> <a
-                                                        class="product-card__add-basket j-add-to-basket btn-main-sm"
-                                                        href="https://www.wildberries.ru/lk/basket"
-                                                        data-link="href{:addedToBooking ? &#39;/lk/booking&#39; : &#39;/lk/basket&#39;}                class{merge:(!addedToBasket &amp;&amp; !~isInBasket) toggle=&#39;btn-main-sm&#39;}                class{merge:(addedToBasket || ~isInBasket) toggle=&#39;btn-base-sm&#39;}                class{merge:(~isInBasket &amp;&amp; addedToBasket) toggle=&#39;disabled&#39;}">
-                                                        <script type="jsv#90^"></script>
-                                                        <script type="jsv#142_"></script> В корзину
-                                                        <script type="jsv/142_"></script>
-                                                        <script type="jsv/90^"></script>
+                                                    <script type="jsv#141_"></script> 
+                                                    
+                                                    <a class="product-card__add-basket j-add-to-basket btn-main-sm">                                                       
+                                                        В корзину                                                       
                                                     </a>
+                                                    <script>         
+                                                        check_product_in_basket("{{ product.id }}")
+                                                    </script>
+
                                                     <script type="jsv/141_"></script>
                                                 </p>
                                                 <script type="jsv/140_"></script>
                                                 <script type="jsv#143_"></script>
-                                                <p class="product-card__delivery">Доставка <span
-                                                        class="product-card__delivery-date">послезавтра</span></p>
                                                 <script type="jsv/143_"></script>
                                             </div>
                                             <script type="jsv/136_"></script>
                                         </div>
                                     </article>
+                                    {% endfor %}                        
                                     <script type="jsv/123_"></script>
                                     <script type="jsv/91^"></script>
                                     <script type="jsv/122_"></script>
@@ -562,6 +546,7 @@
                                     <!--/noindex-->
                                     <div class="jqmPopWindow update-browser-popup"></div>
                                     <script src="{% static 'js/popup.js' %}"></script>
+                                    {% endblock %}
                                     </body>
 
 </html>

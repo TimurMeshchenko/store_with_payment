@@ -1,26 +1,34 @@
-function listen_product_click() {
+function listen_products_click() {
   const products_elements = document.querySelectorAll(".product-card__top-wrap");
 
   for (let product_element of products_elements) {
-    product_element.addEventListener("click", () => {
-      show_popup(product_element);
-      lock_scroll();
-      add_gray_background();
-    });
+    product_element.addEventListener("click", () => handle_product_click(product_element))
   }
 }
 
-function show_popup(product_element) {
-    const popup_html = get_popup_html();
-    
+function handle_product_click(product_element) {
+  add_popup(product_element);
+  add_gray_background();
+  listen_remove_popup();
+  lock_scroll();
+}
+
+function add_popup(product_element) {
+    const popup_html = get_popup_html();  
+
     document.querySelector("body").insertAdjacentHTML("afterbegin", popup_html);
+
+    // const popup_element = document.querySelector(".popup")
+    // const close_popup_element = popup_element.querySelector(".j-close");
+
+    // close_popup_element.addEventListener('click', remove_popup(popup_element))
 }
 
 function get_popup_html() {
   return `
     <div class="popup i-popup-same-part-kt j-product-popup shown"
-        style="z-index: 301; opacity: 1; display: block; top: 50%;left: 50%;transform: translate(-50%, -50%);height: 100%;"><a href="#"
-            class="j-close popup__close close"></a>
+        style="z-index: 301; opacity: 1; display: block; top: 50%;left: 50%;transform: translate(-50%, -50%);height: 100%;"><p
+            class="j-close popup__close close"></p>
         <div class="content">
             <script type="jsv#1169_"></script>
             <script type="jsv#679^"></script>
@@ -50,10 +58,8 @@ function get_popup_html() {
                                                 <div class="zoom-image-container">
                                                     <img class="j-zoom-image" width="900" height="1200"
                                                         loading="lazy"
-                                                        data-link="src{:~tag.imageSrc}css-background-image{:('url(' + ~tag.bgImageSrc +')')}class{merge: ~tag.imageLoaded toggle='hide'}{on 'load' ~tag.renderCanvas}"
-                                                        src="https://basket-05.wbbasket.ru/vol834/part83458/83458555/images/big/1.webp"
+                                                        src="/media/1.webp"
                                                         data-jsv="#701^/701^"
-                                                        style="background-image: url(&quot;undefined&quot;);">
                                                     <canvas class="j-image-canvas"
                                                         data-link="class{merge: !~tag.imageLoaded toggle='hide'}{on 'mousemove' ~tag.renderZoom}{on 'mouseleave' ~tag.resetCanvas}"
                                                         data-jsv="#703^/703^#704^/704^" width="900"
@@ -62,175 +68,6 @@ function get_popup_html() {
                                                 <script type="jsv/1178_"></script>
                                                 <script type="jsv/685^"></script>
                                                 <script type="jsv/1177_"></script>
-                                            </div>
-                                        </li>
-                                        <li data-jsv="/1176_#1180_"
-                                            class="swiper-slide slide swiper-no-swiping swiper-slide-next"
-                                            data-image-index="1" style="width: 512px;">
-                                            <div class="slide__content img-plug j-wba-card-item"
-                                                data-name-for-wba="Item_Photo">
-                                                <script type="jsv#1181_"></script>
-                                                <script type="jsv#686^"></script>
-                                                <script type="jsv#1182_"></script>
-                                                <div class="zoom-image-container">
-                                                    <img class="j-zoom-image hide" width="900" height="1200"
-                                                        loading="lazy"
-                                                        data-link="src{:~tag.imageSrc}css-background-image{:('url(' + ~tag.bgImageSrc +')')}class{merge: ~tag.imageLoaded toggle='hide'}{on 'load' ~tag.renderCanvas}"
-                                                        src="https://basket-05.wbbasket.ru/vol834/part83458/83458555/images/big/2.webp"
-                                                        data-jsv="#708^/708^"
-                                                        style="background-image: url(&quot;undefined&quot;);">
-                                                    <canvas class="j-image-canvas"
-                                                        data-link="class{merge: !~tag.imageLoaded toggle='hide'}{on 'mousemove' ~tag.renderZoom}{on 'mouseleave' ~tag.resetCanvas}"
-                                                        data-jsv="#710^/710^#711^/711^" width="900"
-                                                        height="1200"></canvas>
-                                                </div>
-                                                <script type="jsv/1182_"></script>
-                                                <script type="jsv/686^"></script>
-                                                <script type="jsv/1181_"></script>
-                                            </div>
-                                        </li>
-                                        <li data-jsv="/1180_#1184_" class="swiper-slide slide swiper-no-swiping"
-                                            data-image-index="2" style="width: 512px;">
-                                            <div class="slide__content img-plug j-wba-card-item"
-                                                data-name-for-wba="Item_Photo">
-                                                <script type="jsv#1185_"></script>
-                                                <script type="jsv#687^"></script>
-                                                <script type="jsv#1186_"></script>
-                                                <div class="zoom-image-container">
-                                                    <img class="j-zoom-image hide" width="900" height="1200"
-                                                        loading="lazy"
-                                                        data-link="src{:~tag.imageSrc}css-background-image{:('url(' + ~tag.bgImageSrc +')')}class{merge: ~tag.imageLoaded toggle='hide'}{on 'load' ~tag.renderCanvas}"
-                                                        src="https://basket-05.wbbasket.ru/vol834/part83458/83458555/images/big/3.webp"
-                                                        data-jsv="#715^/715^"
-                                                        style="background-image: url(&quot;undefined&quot;);">
-                                                    <canvas class="j-image-canvas"
-                                                        data-link="class{merge: !~tag.imageLoaded toggle='hide'}{on 'mousemove' ~tag.renderZoom}{on 'mouseleave' ~tag.resetCanvas}"
-                                                        data-jsv="#717^/717^#718^/718^" width="900"
-                                                        height="1200"></canvas>
-                                                </div>
-                                                <script type="jsv/1186_"></script>
-                                                <script type="jsv/687^"></script>
-                                                <script type="jsv/1185_"></script>
-                                            </div>
-                                        </li>
-                                        <li data-jsv="/1184_#1188_" class="swiper-slide slide swiper-no-swiping"
-                                            data-image-index="3" style="width: 512px;">
-                                            <div class="slide__content img-plug j-wba-card-item"
-                                                data-name-for-wba="Item_Photo">
-                                                <script type="jsv#1189_"></script>
-                                                <script type="jsv#688^"></script>
-                                                <script type="jsv#1190_"></script>
-                                                <div class="zoom-image-container">
-                                                    <img class="j-zoom-image hide" width="900" height="1200"
-                                                        loading="lazy"
-                                                        data-link="src{:~tag.imageSrc}css-background-image{:('url(' + ~tag.bgImageSrc +')')}class{merge: ~tag.imageLoaded toggle='hide'}{on 'load' ~tag.renderCanvas}"
-                                                        src="https://basket-05.wbbasket.ru/vol834/part83458/83458555/images/big/4.webp"
-                                                        data-jsv="#722^/722^"
-                                                        style="background-image: url(&quot;undefined&quot;);">
-                                                    <canvas class="j-image-canvas"
-                                                        data-link="class{merge: !~tag.imageLoaded toggle='hide'}{on 'mousemove' ~tag.renderZoom}{on 'mouseleave' ~tag.resetCanvas}"
-                                                        data-jsv="#724^/724^#725^/725^" width="900"
-                                                        height="1200"></canvas>
-                                                </div>
-                                                <script type="jsv/1190_"></script>
-                                                <script type="jsv/688^"></script>
-                                                <script type="jsv/1189_"></script>
-                                            </div>
-                                        </li>
-                                        <li data-jsv="/1188_#1192_" class="swiper-slide slide swiper-no-swiping"
-                                            data-image-index="4" style="width: 512px;">
-                                            <div class="slide__content img-plug j-wba-card-item"
-                                                data-name-for-wba="Item_Photo">
-                                                <script type="jsv#1193_"></script>
-                                                <script type="jsv#689^"></script>
-                                                <script type="jsv#1194_"></script>
-                                                <div class="zoom-image-container">
-                                                    <img class="j-zoom-image hide" width="900" height="1200"
-                                                        loading="lazy"
-                                                        data-link="src{:~tag.imageSrc}css-background-image{:('url(' + ~tag.bgImageSrc +')')}class{merge: ~tag.imageLoaded toggle='hide'}{on 'load' ~tag.renderCanvas}"
-                                                        src="https://basket-05.wbbasket.ru/vol834/part83458/83458555/images/big/5.webp"
-                                                        data-jsv="#729^/729^"
-                                                        style="background-image: url(&quot;undefined&quot;);">
-                                                    <canvas class="j-image-canvas"
-                                                        data-link="class{merge: !~tag.imageLoaded toggle='hide'}{on 'mousemove' ~tag.renderZoom}{on 'mouseleave' ~tag.resetCanvas}"
-                                                        data-jsv="#731^/731^#732^/732^" width="900"
-                                                        height="1200"></canvas>
-                                                </div>
-                                                <script type="jsv/1194_"></script>
-                                                <script type="jsv/689^"></script>
-                                                <script type="jsv/1193_"></script>
-                                            </div>
-                                        </li>
-                                        <li data-jsv="/1192_#1196_" class="swiper-slide slide swiper-no-swiping"
-                                            data-image-index="5" style="width: 512px;">
-                                            <div class="slide__content img-plug j-wba-card-item"
-                                                data-name-for-wba="Item_Photo">
-                                                <script type="jsv#1197_"></script>
-                                                <script type="jsv#690^"></script>
-                                                <script type="jsv#1198_"></script>
-                                                <div class="zoom-image-container">
-                                                    <img class="j-zoom-image hide" width="900" height="1200"
-                                                        loading="lazy"
-                                                        data-link="src{:~tag.imageSrc}css-background-image{:('url(' + ~tag.bgImageSrc +')')}class{merge: ~tag.imageLoaded toggle='hide'}{on 'load' ~tag.renderCanvas}"
-                                                        src="https://basket-05.wbbasket.ru/vol834/part83458/83458555/images/big/6.webp"
-                                                        data-jsv="#736^/736^"
-                                                        style="background-image: url(&quot;undefined&quot;);">
-                                                    <canvas class="j-image-canvas"
-                                                        data-link="class{merge: !~tag.imageLoaded toggle='hide'}{on 'mousemove' ~tag.renderZoom}{on 'mouseleave' ~tag.resetCanvas}"
-                                                        data-jsv="#738^/738^#739^/739^" width="900"
-                                                        height="1200"></canvas>
-                                                </div>
-                                                <script type="jsv/1198_"></script>
-                                                <script type="jsv/690^"></script>
-                                                <script type="jsv/1197_"></script>
-                                            </div>
-                                        </li>
-                                        <li data-jsv="/1196_#1200_" class="swiper-slide slide swiper-no-swiping"
-                                            data-image-index="6" style="width: 512px;">
-                                            <div class="slide__content img-plug j-wba-card-item"
-                                                data-name-for-wba="Item_Photo">
-                                                <script type="jsv#1201_"></script>
-                                                <script type="jsv#691^"></script>
-                                                <script type="jsv#1202_"></script>
-                                                <div class="zoom-image-container">
-                                                    <img class="j-zoom-image hide" width="900" height="1200"
-                                                        loading="lazy"
-                                                        data-link="src{:~tag.imageSrc}css-background-image{:('url(' + ~tag.bgImageSrc +')')}class{merge: ~tag.imageLoaded toggle='hide'}{on 'load' ~tag.renderCanvas}"
-                                                        src="https://basket-05.wbbasket.ru/vol834/part83458/83458555/images/big/7.webp"
-                                                        data-jsv="#743^/743^"
-                                                        style="background-image: url(&quot;undefined&quot;);">
-                                                    <canvas class="j-image-canvas"
-                                                        data-link="class{merge: !~tag.imageLoaded toggle='hide'}{on 'mousemove' ~tag.renderZoom}{on 'mouseleave' ~tag.resetCanvas}"
-                                                        data-jsv="#745^/745^#746^/746^" width="900"
-                                                        height="1200"></canvas>
-                                                </div>
-                                                <script type="jsv/1202_"></script>
-                                                <script type="jsv/691^"></script>
-                                                <script type="jsv/1201_"></script>
-                                            </div>
-                                        </li>
-                                        <li data-jsv="/1200_#1204_" class="swiper-slide slide swiper-no-swiping"
-                                            data-image-index="7" style="width: 512px;">
-                                            <div class="slide__content img-plug j-wba-card-item"
-                                                data-name-for-wba="Item_Photo">
-                                                <script type="jsv#1205_"></script>
-                                                <script type="jsv#692^"></script>
-                                                <script type="jsv#1206_"></script>
-                                                <div class="zoom-image-container">
-                                                    <img class="j-zoom-image hide" width="900" height="1200"
-                                                        loading="lazy"
-                                                        data-link="src{:~tag.imageSrc}css-background-image{:('url(' + ~tag.bgImageSrc +')')}class{merge: ~tag.imageLoaded toggle='hide'}{on 'load' ~tag.renderCanvas}"
-                                                        src="https://basket-05.wbbasket.ru/vol834/part83458/83458555/images/big/8.webp"
-                                                        data-jsv="#750^/750^"
-                                                        style="background-image: url(&quot;undefined&quot;);">
-                                                    <canvas class="j-image-canvas"
-                                                        data-link="class{merge: !~tag.imageLoaded toggle='hide'}{on 'mousemove' ~tag.renderZoom}{on 'mouseleave' ~tag.resetCanvas}"
-                                                        data-jsv="#752^/752^#753^/753^" width="900"
-                                                        height="1200"></canvas>
-                                                </div>
-                                                <script type="jsv/1206_"></script>
-                                                <script type="jsv/692^"></script>
-                                                <script type="jsv/1205_"></script>
                                             </div>
                                         </li>
                                     </ul>
@@ -375,18 +212,33 @@ function get_popup_html() {
     `;
 }
 
+function add_gray_background() {
+    const popup_element = document.querySelector(".popup")
+    const gray_background_element_str = `
+            <div class="overlay initially-hidden j-custom-overlay" style="z-index: 300;"></div>
+        `;
+    popup_element.insertAdjacentHTML("afterend", gray_background_element_str);
+}
+
+function listen_remove_popup() {
+  const popup_element = document.querySelector(".popup");
+  const close_popup_element = popup_element.querySelector(".j-close");
+  const gray_background_element = document.querySelector(".overlay");
+
+  close_popup_element.addEventListener('click', () => remove_popup(popup_element))
+  gray_background_element.addEventListener("click", () => remove_popup(popup_element));
+}
+
+function remove_popup(popup_element) {
+  const overlay_element = document.querySelector(".overlay");
+  
+  popup_element.remove();
+  document.body.classList.remove("body--overflow");
+  overlay_element.remove();
+}
+
 function lock_scroll() {
   document.body.classList.add("body--overflow");
 }
 
-function add_gray_background() {
-  const gray_background_element = `
-        <div class="overlay initially-hidden j-custom-overlay" style="z-index: 300;"></div>
-    `;
-
-  document
-    .querySelector(".popup")
-    .insertAdjacentHTML("afterend", gray_background_element);
-}
-
-listen_product_click();
+listen_products_click();
