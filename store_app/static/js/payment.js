@@ -2,16 +2,9 @@ const stripe = Stripe(
   "pk_test_51OWxceHpvpTxUukxyxDJDUstgQcWWcBa5ejeq95OjXoN305ZlpZOQ7HefDtJIuE0obSQTAyrzJj0DQ3xYPGSyiCG00ezdDZWRD"
 );
 
-const basketItems = {
-  key1: "value1",
-  key2: "value2",
-};
-
-// localStorage.getItem('basketItems')
-
 let elements;
 
-document.querySelector(".b-btn-do-order").addEventListener("click", initialize);
+document.querySelector(".b-btn-do-order")?.addEventListener("click", initialize);
 
 async function initialize() {
   const response = await fetch(window.location, {
@@ -20,7 +13,7 @@ async function initialize() {
       "Content-Type": "application/json",
       "X-CSRFToken": document.getElementsByName("csrfmiddlewaretoken")[0].value,
     },
-    body: JSON.stringify(basketItems),
+    body: localStorage.getItem("basket"),
   });
   const { clientSecret } = await response.json();
   const appearance = {

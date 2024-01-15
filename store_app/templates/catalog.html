@@ -5,7 +5,6 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
     <base href=".">
     <meta name="format-detection" content="telephone=no">
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -15,14 +14,17 @@
     <meta name="google-site-verification" content="guMau7oNvBifqUhZGuuGVtiGD0HkKe8v6uwYpvj2ZIg">
     <meta name="wmail-verification" content="e08a4d66746555c8641fe953d12262c8">
     <meta name="apple-itunes-app" content="app-id=597880187">
-
+    <script>
+        function reload_page() {
+            location.reload();
+        }
+    </script>
     <link rel="icon" href="/media/favicon.ico">
-
-    <link href="{% static 'css/main-v3.min.716ab6e5b2568b3a.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/common.min.121bb7180e1b90be.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/main-page-v3.min.7309e6f7f633c75b.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/popups/productCardPopup.min.6ca2574b943416d5.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/popups/productSelectionManager.min.2f97c2d2117bb281.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/main-v3.min.716ab6e5b2568b3a.css' %}" rel="stylesheet" type="text/css" onerror="reload_page()">
+    <link href="{% static 'css/common.min.121bb7180e1b90be.css' %}" rel="stylesheet" type="text/css" onerror="reload_page()">
+    <link href="{% static 'css/main-page-v3.min.7309e6f7f633c75b.css' %}" rel="stylesheet" type="text/css" onerror="reload_page()">
+    <link href="{% static 'css/popups/productCardPopup.min.6ca2574b943416d5.css' %}" rel="stylesheet" type="text/css" onerror="reload_page()">
+    <link href="{% static 'css/popups/productSelectionManager.min.2f97c2d2117bb281.css' %}" rel="stylesheet" type="text/css" onerror="reload_page()">
 
     {% block css %}
     {% endblock %}
@@ -99,10 +101,11 @@
         </header>
         {% block body %}
         <main class="main left-bg" role="main" id="body-layout">
+            <div class="basket_alert">
+                <p class="basket_alert_message">Товар добавлен в корзину</p>
+            </div>
             <div class="lk-menu">
                 <div class="lk-menu__container j-lk-menu-top hide">
-
-
                     <div class="lk-menu-main hide-mobile">
                         <ul class="lk-menu-main__content">
                             <li class="lk-menu-main__item lk-menu-main__item--main-page">
@@ -343,7 +346,7 @@
                                     <script type="jsv#122_"></script>
                                     <script type="jsv#91^"></script>
                                     <script type="jsv#123_"></script>
-                                    <script src="{% static 'js/catalog_basket.js' %}"></script>
+                                    <script src="{% static 'js/catalog_basket.js' %}" onerror="reload_page()"></script>
 
                                     {% for product in products %}
                                     <article data-nm-id="113035977" data-popup-nm-id="113035977" data-index="0"
@@ -362,7 +365,7 @@
                                                 <div class="product-card__img-wrap img-plug j-thumbnail-wrap"
                                                     data-plug-text="Фото отсутствует"> <img class="j-thumbnail"
                                                         loading="lazy" width="516" height="688" src='{{ product.image.url }}'
-                                                        >
+                                                        onerror="reload_page()">
                                                 </div>
                                                 <script type="jsv/128_"></script>
                                                 <script type="jsv/132_"></script>
@@ -394,7 +397,7 @@
                                                     <a class="product-card__add-basket j-add-to-basket btn-main-sm">                                                       
                                                         В корзину                                                       
                                                     </a>
-                                                    <script>         
+                                                    <script>   
                                                         check_product_in_basket("{{ product.id }}")
                                                     </script>
 
@@ -545,7 +548,7 @@
                                     </div>
                                     <!--/noindex-->
                                     <div class="jqmPopWindow update-browser-popup"></div>
-                                    <script src="{% static 'js/popup.js' %}"></script>
+                                    <script src="{% static 'js/popup.js' %}" onerror="reload_page()"></script>  
                                     {% endblock %}
                                     </body>
 

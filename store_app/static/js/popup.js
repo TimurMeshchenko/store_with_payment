@@ -1,33 +1,28 @@
-function listen_products_click() {
+async function listen_products_click() {
   const products_elements = document.querySelectorAll(".product-card__top-wrap");
 
   for (let product_element of products_elements) {
-    product_element.addEventListener("click", () => handle_product_click(product_element))
+    product_element.addEventListener("click", async () => await handle_product_click(product_element))
   }
 }
 
-function handle_product_click(product_element) {
-  add_popup(product_element);
-  add_gray_background();
-  listen_remove_popup();
-  lock_scroll();
+async function handle_product_click(product_element) {
+  await add_popup(product_element);
+  await add_gray_background();
+  await listen_remove_popup();
+  await lock_scroll();
 }
 
-function add_popup(product_element) {
-    const popup_html = get_popup_html();  
-
+async function add_popup(product_element) {
+    const product = await get_product(product_element.parentNode);
+    const popup_html = await get_popup_html(product);  
     document.querySelector("body").insertAdjacentHTML("afterbegin", popup_html);
-
-    // const popup_element = document.querySelector(".popup")
-    // const close_popup_element = popup_element.querySelector(".j-close");
-
-    // close_popup_element.addEventListener('click', remove_popup(popup_element))
 }
 
-function get_popup_html() {
+async function get_popup_html(product) {
   return `
     <div class="popup i-popup-same-part-kt j-product-popup shown"
-        style="z-index: 301; opacity: 1; display: block; top: 50%;left: 50%;transform: translate(-50%, -50%);height: 100%;"><p
+        style="z-index: 301; opacity: 1; display: block; top: 50%;left: 50%;transform: translate(-50%, -50%);height: 100%;overflow: auto;"><p
             class="j-close popup__close close"></p>
         <div class="content">
             <script type="jsv#1169_"></script>
@@ -58,7 +53,9 @@ function get_popup_html() {
                                                 <div class="zoom-image-container">
                                                     <img class="j-zoom-image" width="900" height="1200"
                                                         loading="lazy"
-                                                        src="/media/1.webp"
+                                                        src=/media/${
+                                                          product.image
+                                                        }
                                                         data-jsv="#701^/701^"
                                                     <canvas class="j-image-canvas"
                                                         data-link="class{merge: !~tag.imageLoaded toggle='hide'}{on 'mousemove' ~tag.renderZoom}{on 'mouseleave' ~tag.resetCanvas}"
@@ -91,12 +88,10 @@ function get_popup_html() {
                 <div class="product__content">
                     <div class="product__header-wrap"> <div class="product__header j-product-title"
                             data-link="href{urlForGood:selectedNomenclature^nmId true (targetInfo &amp;&amp; targetInfo.targetUrl) null isAdv}"
-                            > <span
-                                class="product__brand-name"
-                                data-link="class{merge: !selectedNomenclature^brandName toggle='hide'}text{:selectedNomenclature^brandName}">TiSun</span>
-                            <span data-link="text{:selectedNomenclature^goodsName}">Чай листовой зеленый черный
-                                фруктовый
-                                улун пуэр 6 баночек</span> </div>
+                            >
+                            <span data-link="text{:selectedNomenclature^goodsName}">${
+                              product.name
+                            }</span> </div>
                     </div>
                     
 
@@ -114,7 +109,9 @@ function get_popup_html() {
                                 <div class="price-block__content">
                                     <div class="price-block__price-group">
                                         <p class="price-block__price-wrap "> <span class="price-block__price">
-                                                <ins class="price-block__final-price"> 752&nbsp;₽ </ins> </span>
+                                                <ins class="price-block__final-price"> ${Number(
+                                                  product.price
+                                                )}&nbsp;₽ </ins> </span>
                                             <script type="jsv#1211_"></script> 
                                             <script type="jsv/1211_"></script>
                                         </p>
@@ -144,8 +141,8 @@ function get_popup_html() {
                                 </div>
                             </div>
                         </div>
-                        <div style="word-wrap: break-word;padding-bottom: 20px;max-height: 35%;overflow: hidden;">
-                            <p>Описание</p>
+                        <div>
+                            <p style="color: black;">${product.description}</p>
                         </div>
 
                         <div class="product__order" data-link="{include orderModel tmpl=orderModel.template}">
@@ -153,14 +150,7 @@ function get_popup_html() {
                             <div class="order" data-link="class{merge: isDigital toggle='hide'}"> <button
                                     class="order__btn-buy btn-base hide"
                                     data-link="class{merge: !showAddToBasketBtn() || !$services.userData.userData.isAuthenticated || isPreorder toggle='hide'}class{merge:~short toggle='hide-mobile'}{on $adult.proceedIfAdultConfirmed adult buyItNow #data}"
-                                    data-jsv="#789^/789^">Купить сейчас</button> <button class="btn-main"
-                                    data-link="class{merge: !showAddToBasketBtn() toggle='hide'}{on $adult.proceedIfAdultConfirmed adult addToBasket #data}"
-                                    aria-label="Добавить в корзину" data-jsv="#791^/791^"> <span
-                                        class="hide-mobile"
-                                        data-link="text{:isPreorder ? 'Предзаказ' : 'Добавить в корзину'}class{merge:~short toggle='hide'}">Добавить
-                                        в корзину</span> <span class="hide-desktop"
-                                        data-link="text{:isPreorder ? 'Предзаказ' : 'В корзину'}class{merge:!~short toggle='hide-desktop'}">В
-                                        корзину</span> </button> <a class="btn-base j-go-to-basket hide"
+                                    data-jsv="#789^/789^">Купить сейчас</button><a class="btn-base j-go-to-basket hide"
                                     href="/lk/basket" data-link="class{merge: !addedToBasket toggle='hide'}">
                                     Перейти в корзину </a> <button class="btn-main hide"
                                     data-link="class{merge: !showAddToWlBtn() toggle='hide'}{on $adult.proceedIfAdultConfirmed adult addToWl #data}"
@@ -212,7 +202,7 @@ function get_popup_html() {
     `;
 }
 
-function add_gray_background() {
+async function add_gray_background() {
     const popup_element = document.querySelector(".popup")
     const gray_background_element_str = `
             <div class="overlay initially-hidden j-custom-overlay" style="z-index: 300;"></div>
@@ -220,7 +210,7 @@ function add_gray_background() {
     popup_element.insertAdjacentHTML("afterend", gray_background_element_str);
 }
 
-function listen_remove_popup() {
+async function listen_remove_popup() {
   const popup_element = document.querySelector(".popup");
   const close_popup_element = popup_element.querySelector(".j-close");
   const gray_background_element = document.querySelector(".overlay");
@@ -229,7 +219,7 @@ function listen_remove_popup() {
   gray_background_element.addEventListener("click", () => remove_popup(popup_element));
 }
 
-function remove_popup(popup_element) {
+async function remove_popup(popup_element) {
   const overlay_element = document.querySelector(".overlay");
   
   popup_element.remove();
@@ -237,7 +227,7 @@ function remove_popup(popup_element) {
   overlay_element.remove();
 }
 
-function lock_scroll() {
+async function lock_scroll() {
   document.body.classList.add("body--overflow");
 }
 

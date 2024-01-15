@@ -1,30 +1,19 @@
-1. Корзина. 
-нажимаю на мусорку 
-addEventListener('click', trash)
+1. Остальные товары с помощью js querySelectorAll(названия цены описание img.webp) для каждого товара отдельно
+insert into store_app_product (name, description, price, image)
+values (данные продукта) сначала 1 для теста, потом повторить 150 раз, потом вставлю
 
-удалить из localstorage
-пройти по каждому товару и у кого будет тот же product_name удалить  
-basket.pop(product_name)
-localStorage.setItem("basket", basket)
+2. Поиск, при введении буквы get получить товары, которые содержат эту букву и вывести названия с 
+картинками, при клике открывать описание.
+3. infinity scroll
 
-и страницы
-event.target.parentNode.remove()
+4. anywhere
 
-увеличивать количество товаров, localstorage, html изменить количество.
+<script>
+    function reload_page() {
+        location.reload();
+    }
+</script>
 
-и перерасчет basket['price'] * basket['count']
-для итого сложить все '.list-item__price-new'
+Для link, script, img onerror="reload_page()"
 
-payment передать basket
-
-2. При добавлении окошко уведомление
-3. Описание товара
-
-6. Первые товары из интересов с описанием только товары, чтобы кол менять, 
-остальное сгенерировать много товаров сохранить в яндексе сайт без описания.
-
-7. Поиск, при введении буквы get получить товары, которые содержат эту букву, как в remanga.
-8. infinity scroll
-
-9. anywhere
-10. Добавить в резюме
+5. Добавить в резюме

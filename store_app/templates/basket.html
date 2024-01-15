@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block css %}
-    <link href="{% static 'css/basket/basket-v3.min.782cbc13532e70c7.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/basket/basket-v3.min.782cbc13532e70c7.css' %}" rel="stylesheet" type="text/css" onerror="reload_page()">
     <link rel="stylesheet" href="{% static 'css/basket/payment.css' %}" />
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="{% static 'js/payment.js' %}" defer></script>
+    <script src="https://js.stripe.com/v3/" onerror="reload_page()"></script>
+    <script src="{% static 'js/payment.js' %}" defer onerror="reload_page()"></script>
 {% endblock %}
 
 {% block title %}
@@ -73,92 +73,6 @@
                                                                 <script type="jsv#464^"></script>
                                                                 <script type="jsv#914_"></script>
                                                                 <script type="jsv#915_"></script>
-
-
-
-
-
-
-
-
-
-
-
-                                                                <!-- <div class="accordion__list-item list-item j-b-basket-item" data-link="{include tmpl=&#39;basketItemInStockTmpl&#39;}">
-                                                                    <div class="list-item__wrap">
-                                                                        <div class="list-item__good">
-                                                                            <p class="img-plug list-item__good-img j-product-popup">
-                                                                                <img loading="lazy" src="/media/1.webp" style="width: 96px;">
-                                                                            </p>
-                                                                            <div class="list-item__good-info good-info">
-                                                                                <script type="jsv#478^"></script>
-                                                                                <script type="jsv/478^"></script>
-                                                                                <p class="good-info__title j-product-popup">
-                                                                                    <span class="good-info__good-name">
-                                                                                        <script type="jsv#479^"></script>
-                                                                                        Отбеливающий пилинг эксфолиант
-                                                                                        для лица от прыщей
-                                                                                        <script type="jsv/479^"></script>
-                                                                                    </span>
-                                                                                </p>
-                                                                                <div class="good-info__properties hide">
-                                                                                </div>
-                                                                                <div class="good-info__seller seller j-suppliers-info hide-mobile" data-nm="12104954"></div>
-                                                                                <div class="good-info__properties good-info__properties--variable">
-                                                                                </div>
-                                                                                <script type="jsv#484^"></script>
-                                                                                <script type="jsv/484^"></script>
-                                                                                <script type="jsv#923_"></script>
-                                                                                <div class="good-info__badge-wrap">
-                                                                                </div>
-                                                                                <script type="jsv/923_"></script>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="list-item__count count">
-                                                                            <div class="count__wrap">
-                                                                                <div class="count__input-number">
-                                                                                    <button type="button" class="count__minus minus disabled"
-                                                                                        data-link="class{merge: quantity &lt;= minQuantity toggle=&#39;disabled&#39;}"
-                                                                                        aria-label="Уменьшить количество"></button>
-                                                                                    <input type="number" data-link="{:quantity:}" autocomplete="off" maxlength="2" min="1"
-                                                                                        class="in_tb j-tb-qnt count__numeric ignore">
-                                                                                    <button type="button" class="count__plus plus"
-                                                                                        data-link="class{merge: quantity == maxQuantity toggle=&#39;disabled&#39;}"
-                                                                                        aria-label="Увеличить количество"></button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <script type="jsv#486^"></script>
-                                                                        <script type="jsv#924_"></script>
-                                                                        <script type="jsv#925_"></script>
-                                                                        <div class="list-item__price">
-                                                                            <div class="list-item__price-new" data-link="{formatMoneyAnim priceSumWithCouponAndDiscount}"
-                                                                                data-jsv="#490^/490^">414&nbsp;₽</div>
-                                                                            <script type="jsv#485^"></script>
-                                                                            <script type="jsv#926_"></script>
-                                                                            <script type="jsv/926_"></script>
-                                                                            <script type="jsv/485^"></script>
-                                                                            <div class="list-item__btn btn"><button class="btn__del j-basket-item-del" type="button"> <span> Удалить
-                                                                                    </span> </button> </div>
-                                                                        </div>
-                                                                        <script type="jsv/925_"></script>
-                                                                        <script type="jsv/924_"></script>
-                                                                        <script type="jsv/486^"></script>
-                                                                    </div>
-                                                                    <script type="jsv/918_"></script>
-                                                                </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
                                                                 <script type="jsv/915_"></script>
                                                                 <script type="jsv/914_"></script>
                                                                 <script type="jsv/464^"></script>
@@ -226,7 +140,7 @@
                                                         <script type="jsv/554^"></script>
                                                         <p class="b-top__total line"> <span>Итого</span> <span> <span
                                                                     data-link="{formatMoneyAnim (totalPriceWithCouponPersDiscAndDeliveryPrice - (!postpay() &amp;&amp; payByBalance &lt; 0 ? payByBalance : 0)) + totalPaymentFeeAmount converter=&#39;basketPriceWithCurrencyV2&#39;}"
-                                                                    data-jsv="#560^/560^">414&nbsp;₽</span> </span> </p>
+                                                                    data-jsv="#560^/560^" class="total_price">414&nbsp;₽</span> </span> </p>
                                                     </div>
                                                     <script type="jsv#555^"></script>
                                                     <script type="jsv#955_"></script>
@@ -278,5 +192,5 @@
 
         </main>
     </div>
-    <script src="{% static 'js/basket.js' %}"></script>
+    <script src="{% static 'js/basket.js' %}" onerror="reload_page()"></script>
 {% endblock %}

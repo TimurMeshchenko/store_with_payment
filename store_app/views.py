@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404
 from django.views import generic
-from typing import Union, Any, Optional
 from django.http import JsonResponse
 import stripe
 import json
@@ -25,7 +24,6 @@ class BasketView(generic.ListView):
 
     def post(self, request, **kwargs):
         basket = json.loads(request.body)
-
         payment_intent = stripe.PaymentIntent.create(
             amount=self.calculate_order_amount(basket),
             currency='rub',
@@ -34,8 +32,14 @@ class BasketView(generic.ListView):
         return JsonResponse({'clientSecret': payment_intent.client_secret})
 
     def calculate_order_amount(self, basket):
-        # return sum([get_object_or_404(Product, pk=product['id']).price for product in basket])
-        return 1000 * 100
+        total_price = 0
+
+        for product in basket:
+            product_object = get_object_or_404(Product, pk=product['id'])
+            product_count = product['count'] if 'count' in product else 1
+            total_price += product_object.price * product_count
+
+        return int(total_price * 100)
 
 def get_product(request):
     product_name = request.GET.get('product_name')
