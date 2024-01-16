@@ -16,11 +16,13 @@ Including another URLconf
 """
 from django.urls import path
 
-from store_app.views import CatalogView, BasketView, get_product, get_products_by_search
+from store_app.views import CatalogView, BasketView, get_product, \
+    get_products_by_search, get_products_page
 
 urlpatterns = [
     path('', CatalogView.as_view(), name='catalog'),
     path('basket/', BasketView.as_view(), name='basket'),
+    path('api/get_products_page', get_products_page, name='get_products_page'),
     path('api/get_product', get_product, name='get_product'),
     path('api/get_products_by_search', get_products_by_search, name='get_products_by_search'),
 ]

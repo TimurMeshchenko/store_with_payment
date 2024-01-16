@@ -1,8 +1,15 @@
-async function listen_products_click() {
-  const products_elements = document.querySelectorAll(".product-card__top-wrap");
+let product_element = undefined;
 
-  for (let product_element of products_elements) {
-    product_element.addEventListener("click", async () => await handle_product_click(product_element))
+async function listen_products_click() {
+  const products_elements = document.querySelectorAll(
+    ".product-card__top-wrap"
+  );
+
+  for (let i = offset; i < products_elements.length; i++) {
+    products_elements[i].addEventListener(
+      "click",
+      async () => await handle_product_click(products_elements[i])
+    );
   }
 }
 
@@ -14,15 +21,17 @@ async function handle_product_click(product_element) {
 }
 
 async function add_popup(_product_element) {
-    product_element = _product_element
-    const product_id = product_element.dataset.nmId    
-    const product_parent_element = product_id ? product_element : product_element.parentNode.parentNode
-    const product = await get_product(product_parent_element);
-    const popup_html = await get_popup_html(product);  
+  product_element = _product_element;
+  const product_id = product_element.dataset.nmId;
+  const product_parent_element = product_id
+    ? product_element
+    : product_element.parentNode.parentNode;
+  const product = await get_product(product_parent_element);
+  const popup_html = await get_popup_html(product);
 
-    document.querySelector("body").insertAdjacentHTML("afterbegin", popup_html);
+  document.querySelector("body").insertAdjacentHTML("afterbegin", popup_html);
 
-    check_popup_product_in_basket(product.id);
+  check_popup_product_in_basket(product.id);
 }
 
 async function get_popup_html(product) {
@@ -224,45 +233,43 @@ function check_popup_product_in_basket(product_id) {
 }
 
 function save_popup_product_id(event) {
-    const button_basket_div = document.querySelector(".btn-order");
-    let product_basket_button =
-      product_element.parentNode.querySelector(".product-card__add-basket") 
-      || get_product_basket_button_if_search();
+  const button_basket_div = document.querySelector(".btn-order");
+  let product_basket_button =
+    product_element.parentNode.querySelector(".product-card__add-basket") ||
+    get_product_basket_button_if_search();
 
-    const button_basket = event.currentTarget
-      .closest(".btn-order")
-      .querySelector(".btn-popup");
+  const button_basket = event.currentTarget
+    .closest(".btn-order")
+    .querySelector(".btn-popup");
 
-    save_product_id(button_basket);
-    change_button_in_basket(product_basket_button);
+  save_product_id(button_basket);
+  change_button_in_basket(product_basket_button);
 
-    button_basket_div.removeEventListener("click", save_popup_product_id);
-    product_basket_button.removeEventListener("click", save_product_id);
+  button_basket_div.removeEventListener("click", save_popup_product_id);
+  product_basket_button.removeEventListener("click", save_product_id);
 }
 
 function get_product_basket_button_if_search() {
-    const popup_id = document.querySelector(".popup").dataset.nmId;
-    const products_elements = document.querySelectorAll(
-      ".main-page__product"
-    );
+  const popup_id = document.querySelector(".popup").dataset.nmId;
+  const products_elements = document.querySelectorAll(".main-page__product");
 
-    for (let product_element of products_elements) {
-      if (product_element.dataset.nmId == popup_id) {
-        product_basket_button = product_element.querySelector(
-          ".product-card__add-basket"
-        );
-        
-        return product_basket_button;
-      }
+  for (let product_element of products_elements) {
+    if (product_element.dataset.nmId == popup_id) {
+      product_basket_button = product_element.querySelector(
+        ".product-card__add-basket"
+      );
+
+      return product_basket_button;
     }
+  }
 }
 
 async function add_gray_background() {
-    const popup_element = document.querySelector(".popup")
-    const gray_background_element_str = `
+  const popup_element = document.querySelector(".popup");
+  const gray_background_element_str = `
             <div class="overlay initially-hidden j-custom-overlay" style="z-index: 300;"></div>
         `;
-    popup_element.insertAdjacentHTML("afterend", gray_background_element_str);
+  popup_element.insertAdjacentHTML("afterend", gray_background_element_str);
 }
 
 async function listen_remove_popup() {
@@ -270,13 +277,17 @@ async function listen_remove_popup() {
   const close_popup_element = popup_element.querySelector(".j-close");
   const gray_background_element = document.querySelector(".overlay");
 
-  close_popup_element.addEventListener('click', () => remove_popup(popup_element))
-  gray_background_element.addEventListener("click", () => remove_popup(popup_element));
+  close_popup_element.addEventListener("click", () =>
+    remove_popup(popup_element)
+  );
+  gray_background_element.addEventListener("click", () =>
+    remove_popup(popup_element)
+  );
 }
 
 async function remove_popup(popup_element) {
   const overlay_element = document.querySelector(".overlay");
-  
+
   popup_element.remove();
   document.body.classList.remove("body--overflow");
   overlay_element.remove();
@@ -285,7 +296,3 @@ async function remove_popup(popup_element) {
 async function lock_scroll() {
   document.body.classList.add("body--overflow");
 }
-
-let product_element = undefined;
-
-listen_products_click();

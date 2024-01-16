@@ -345,71 +345,6 @@
                                     <script type="jsv#122_"></script>
                                     <script type="jsv#91^"></script>
                                     <script type="jsv#123_"></script>
-                                    <script src="{% static 'js/catalog_basket.js' %}" onerror="reload_page()"></script>
-
-                                    {% for product in products %}
-                                    <article data-nm-id="{{ product.id }}" data-popup-nm-id="113035977" data-index="0"
-                                        data-analitics-code="MCS" data-target-url="MI"
-                                        class="main-page__product product-card j-product-item product-card--hoverable j-content-item"
-                                        data-link="class{merge: ~parent.hideOn6 toggle=&#39;product-hide-6&#39;}class{merge: ~parent.hideOn4 toggle=&#39;product-hide-4&#39;}class{merge: ~parent.hideOn2 toggle=&#39;product-hide-2&#39;}"
-                                        style="">
-                                        <div class="product-card__wrapper">
-                                            <div class="product-card__top-wrap">
-                                                <script type="jsv#126_"></script>
-                                                <script type="jsv#127_"></script>
-                                                <script type="jsv/127_"></script>
-                                                <script type="jsv/126_"></script>
-                                                <div class="product-card__tips product-card__tips--top"> </div>
-                                                <script type="jsv#128_"></script>
-                                                <div class="product-card__img-wrap img-plug j-thumbnail-wrap"
-                                                    data-plug-text="Фото отсутствует"> <img class="j-thumbnail"
-                                                        loading="lazy" width="516" height="688" src='{{ product.image.url }}'
-                                                        onerror="reload_page()">
-                                                </div>
-                                                <script type="jsv/128_"></script>
-                                                <script type="jsv/132_"></script>
-                                            </div>
-                                            <div class="product-card__middle-wrap">
-                                                <script type="jsv#133_"></script>
-                                                <p class="product-card__price price"> <span class="price__wrap">
-                                                        <script type="jsv#134_"></script> <ins
-                                                            class="price__lower-price"> {{ product.price|floatformat:0 }}&nbsp;₽ </ins>
-                                                        <script type="jsv/134_"></script>
-                                                    </span> </p>
-                                                <script type="jsv/133_"></script>
-                                                <h2 class="product-card__brand-wrap product-card__brand-wrap--no-wrap">
-                                                    <span
-                                                        >{{ product.name }}</span>
-                                                </h2>
-                                            </div>
-                                            <script type="jsv#136_"></script>
-                                            <div class="product-card__bottom-wrap">
-                                                <script type="jsv#137_"></script>
-                                                <script type="jsv/137_"></script>
-                                                <script type="jsv#139_"></script>
-                                                <p class="product-card__sizes j-sizes"></p>
-                                                <script type="jsv/139_"></script>
-                                                <script type="jsv#140_"></script>
-                                                <p class="product-card__order-wrap">
-                                                    <script type="jsv#141_"></script> 
-                                                    
-                                                    <a class="product-card__add-basket j-add-to-basket btn-main-sm">                                                       
-                                                        В корзину                                                       
-                                                    </a>
-                                                    <script>   
-                                                        check_product_in_basket("{{ product.id }}")
-                                                    </script>
-
-                                                    <script type="jsv/141_"></script>
-                                                </p>
-                                                <script type="jsv/140_"></script>
-                                                <script type="jsv#143_"></script>
-                                                <script type="jsv/143_"></script>
-                                            </div>
-                                            <script type="jsv/136_"></script>
-                                        </div>
-                                    </article>
-                                    {% endfor %}                        
                                     <script type="jsv/123_"></script>
                                     <script type="jsv/91^"></script>
                                     <script type="jsv/122_"></script>
@@ -546,9 +481,10 @@
                                         <script type="jsv/978_"></script>
                                     </div>
                                     <!--/noindex-->
-                                    <div class="jqmPopWindow update-browser-popup"></div>
-                                    <script src="{% static 'js/popup.js' %}" onerror="reload_page()"></script>  
+                                    <script src="{% static 'js/catalog_basket.js' %}" onerror="reload_page()"></script>
                                     <script src="{% static 'js/search.js' %}" onerror="reload_page()"></script>
+                                    <script src="{% static 'js/infinity_scroll.js' %}" onerror="reload_page()"></script>
+                                    <script src="{% static 'js/popup.js' %}" onerror="reload_page()"></script>  
                                     {% endblock %}
                                     </body>
 

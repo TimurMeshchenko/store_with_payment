@@ -18,19 +18,6 @@ function set_basket_counter() {
   basket_counter.textContent = basket_products_id.size;
 }
 
-function check_product_in_basket(product_id) {
-    const buttons_basket = main_page_content.querySelectorAll(
-      ".product-card__add-basket"
-    );
-    const button_basket = buttons_basket[buttons_basket.length-1];
-    
-    if (basket_products_id.has(Number(product_id))) {
-      change_button_in_basket(button_basket);
-    } else {
-      button_basket.addEventListener("click", save_product_id);
-    }
-}
-
 async function save_product_id(event) {
     const basket_button = event.target || event;
     const product_div =
