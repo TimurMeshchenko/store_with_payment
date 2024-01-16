@@ -3,7 +3,7 @@
 
 {% block css %}
     <link href="{% static 'css/basket/basket-v3.min.782cbc13532e70c7.css' %}" rel="stylesheet" type="text/css" onerror="reload_page()">
-    <link rel="stylesheet" href="{% static 'css/basket/payment.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/basket/payment.css' %}" onerror="reload_page()"/>
     <script src="https://js.stripe.com/v3/" onerror="reload_page()"></script>
     <script src="{% static 'js/payment.js' %}" defer onerror="reload_page()"></script>
 {% endblock %}

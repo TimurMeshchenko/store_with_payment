@@ -32,8 +32,10 @@ function check_product_in_basket(product_id) {
 }
 
 async function save_product_id(event) {
-    const basket_button = event.target;
-    const product_div = basket_button.parentNode.parentNode.parentNode;
+    const basket_button = event.target || event;
+    const product_div =
+      basket_button.parentNode.parentNode.parentNode.parentNode;
+
     const product = await get_product(product_div);
     const basket = localStorage.getItem("basket"); 
     let basket_data = undefined;
@@ -50,14 +52,15 @@ async function save_product_id(event) {
     change_button_in_basket(basket_button);
     increase_basket_counter();
     basket_button.removeEventListener("click", save_product_id);
+    basket_products_id.add(product.id);
 
     show_basket_alert();
 }
 
 async function get_product(product_div) {
-    const product_name = product_div.querySelector('h2 > span').textContent;
+    const product_id = product_div.dataset.nmId;
     const response = await fetch(
-      `${window.location.href}api/get_product?product_name=${product_name}`
+      `${window.location.href}api/get_product?product_id=${product_id}`
     );
     const product_dict = await response.json();
     const product = product_dict["product"];

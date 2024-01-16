@@ -13,15 +13,23 @@ async function handle_product_click(product_element) {
   await lock_scroll();
 }
 
-async function add_popup(product_element) {
-    const product = await get_product(product_element.parentNode);
+async function add_popup(_product_element) {
+    product_element = _product_element
+    const product_id = product_element.dataset.nmId    
+    const product_parent_element = product_id ? product_element : product_element.parentNode.parentNode
+    const product = await get_product(product_parent_element);
     const popup_html = await get_popup_html(product);  
+
     document.querySelector("body").insertAdjacentHTML("afterbegin", popup_html);
+
+    check_popup_product_in_basket(product.id);
 }
 
 async function get_popup_html(product) {
   return `
-    <div class="popup i-popup-same-part-kt j-product-popup shown"
+    <div data-nm-id="${
+      product.id
+    }" class="popup i-popup-same-part-kt j-product-popup shown"
         style="z-index: 301; opacity: 1; display: block; top: 50%;left: 50%;transform: translate(-50%, -50%);height: 100%;overflow: auto;"><p
             class="j-close popup__close close"></p>
         <div class="content">
@@ -85,7 +93,7 @@ async function get_popup_html(product) {
                     </div>
                     <p class="product__for-adults">Товары для взрослых</p>
                 </div>
-                <div class="product__content">
+                <div data-nm-id="${product.id}" class="product__content">
                     <div class="product__header-wrap"> <div class="product__header j-product-title"
                             data-link="href{urlForGood:selectedNomenclature^nmId true (targetInfo &amp;&amp; targetInfo.targetUrl) null isAdv}"
                             >
@@ -95,7 +103,7 @@ async function get_popup_html(product) {
                     </div>
                     
 
-                    <div class="product__info-wrap"
+                    <div data-nm-id="${product.id}" class="product__info-wrap"
                         data-link="class{merge: disableFullButton toggle='product__info-wrap--full'}">
                         <div data-link="{include priceModel tmpl=priceModel.template}">
                             <script type="jsv#1208_"></script>
@@ -165,6 +173,9 @@ async function get_popup_html(product) {
                             <script type="jsv/1214_"></script>
                             <script type="jsv/1213_"></script>
                         </div>
+
+                        <div class="product__order" data-link="{include orderModel tmpl=orderModel.template}"><script type="jsv#2064_"></script><div class="order btn-order" data-link="class{merge: isDigital toggle='hide'}">    <button class="order__btn-buy btn-base hide" data-link="class{merge: !showAddToBasketBtn() || !$services.userData.userData.isAuthenticated || isPreorder toggle='hide'}class{merge:~short toggle='hide-mobile'}{on $adult.proceedIfAdultConfirmed adult buyItNow #data}" data-jsv="#961^/961^">Купить сейчас</button>    <button class="btn-main btn-popup" data-link="class{merge: !showAddToBasketBtn() toggle='hide'}{on $adult.proceedIfAdultConfirmed adult addToBasket #data}" aria-label="Добавить в корзину" data-jsv="#963^/963^">        <span class="hide-mobile" data-link="text{:isPreorder ? 'Предзаказ' : 'Добавить в корзину'}class{merge:~short toggle='hide'}">Добавить в корзину</span>        <span class="hide-desktop" data-link="text{:isPreorder ? 'Предзаказ' : 'В корзину'}class{merge:!~short toggle='hide-desktop'}">В корзину</span>    </button>    <a class="btn-base j-go-to-basket hide" href="/lk/basket" data-link="class{merge: !addedToBasket toggle='hide'}">        Перейти в корзину    </a>    <button class="btn-main hide" data-link="class{merge: !showAddToWlBtn() toggle='hide'}{on $adult.proceedIfAdultConfirmed adult addToWl #data}" data-jsv="#970^/970^">        В избранное    </button>    <p class="btn-main disabled j-add-to-wait-msg hide" data-link="class{merge: !addedToWl toggle='hide'}">        Добавлено в избранное    </p></div><script type="jsv#2065_"></script>    <script type="jsv#2066_"></script><script type="jsv/2066_"></script><script type="jsv/2065_"></script><script type="jsv/2064_"></script></div>
+                        
                         <div class="product__delivery-wrap">
                             <p class="digital-info hide"
                                 data-link="class{merge:!selectedNomenclature^isDigital toggle='hide'}text{:selectedNomenclature^isVideo ? 'Видеоматериалы будут доступны для просмотра в Личном кабинете сразу после покупки' : selectedNomenclature^isActivationKey ? 'Ключ активации будет доступен сразу после покупки в Личном кабинете, в полной версии сайта' : 'Электронная книга будет доступна для скачивания в Личном кабинете сразу после покупки'}">
@@ -202,6 +213,50 @@ async function get_popup_html(product) {
     `;
 }
 
+function check_popup_product_in_basket(product_id) {
+  const button_basket_div = document.querySelector(".btn-order");
+
+  if (basket_products_id.has(Number(product_id))) {
+    change_button_in_basket(button_basket_div.querySelector(".btn-popup"));
+  } else {
+    button_basket_div.addEventListener("click", save_popup_product_id);
+  }
+}
+
+function save_popup_product_id(event) {
+    const button_basket_div = document.querySelector(".btn-order");
+    let product_basket_button =
+      product_element.parentNode.querySelector(".product-card__add-basket") 
+      || get_product_basket_button_if_search();
+
+    const button_basket = event.currentTarget
+      .closest(".btn-order")
+      .querySelector(".btn-popup");
+
+    save_product_id(button_basket);
+    change_button_in_basket(product_basket_button);
+
+    button_basket_div.removeEventListener("click", save_popup_product_id);
+    product_basket_button.removeEventListener("click", save_product_id);
+}
+
+function get_product_basket_button_if_search() {
+    const popup_id = document.querySelector(".popup").dataset.nmId;
+    const products_elements = document.querySelectorAll(
+      ".main-page__product"
+    );
+
+    for (let product_element of products_elements) {
+      if (product_element.dataset.nmId == popup_id) {
+        product_basket_button = product_element.querySelector(
+          ".product-card__add-basket"
+        );
+        
+        return product_basket_button;
+      }
+    }
+}
+
 async function add_gray_background() {
     const popup_element = document.querySelector(".popup")
     const gray_background_element_str = `
@@ -230,5 +285,7 @@ async function remove_popup(popup_element) {
 async function lock_scroll() {
   document.body.classList.add("body--overflow");
 }
+
+let product_element = undefined;
 
 listen_products_click();

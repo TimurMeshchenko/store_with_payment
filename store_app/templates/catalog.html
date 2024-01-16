@@ -53,7 +53,6 @@
          {on &#39;mouseleave&#39; &#39;.j-search-catalog-autocomplete&#39; unmarkSuggests}
          class{merge: imageChipData toggle=&#39;search-catalog--photo&#39;}"
                         data-jsv="#82^/82^#83^/83^#84^/84^#85^/85^#86^/86^#87^/87^#88^/88^">
-
                         <div class="search-catalog__block"
                             data-link="class{merge: hasAnySuggestions() toggle=&#39;search-catalog--active&#39;}">
                             <input autocomplete="off" id="searchInput" class="search-catalog__input j-wba-header-item"
@@ -65,8 +64,8 @@
                                 data-link="{include imageChipData tmpl=(imageChipData &amp;&amp; imageChipData.template)}class{merge: imageChipData &amp;&amp; imageChipData^uploading toggle=&#39;progress&#39;}">
                             </div>
                         </div>
-                        <div class="autocomplete search-catalog__autocomplete hide-mobile j-search-catalog-autocomplete"
-                            data-link="{if ~root.$isDesktop &amp;&amp; hasAnySuggestions() tmpl=&#39;searchSuggestionsTmpl&#39;}">
+                        <div class="autocomplete search-catalog__autocomplete j-search-catalog-autocomplete"
+                        data-link="{if ~root.$isDesktop &amp;&amp; hasAnySuggestions() tmpl=&#39;searchSuggestionsTmpl&#39;}">
                         </div>
                     </div>
                     <div class="header__navbar-pc navbar-pc j-b-header-menu" id="basketContent">
@@ -349,7 +348,7 @@
                                     <script src="{% static 'js/catalog_basket.js' %}" onerror="reload_page()"></script>
 
                                     {% for product in products %}
-                                    <article data-nm-id="113035977" data-popup-nm-id="113035977" data-index="0"
+                                    <article data-nm-id="{{ product.id }}" data-popup-nm-id="113035977" data-index="0"
                                         data-analitics-code="MCS" data-target-url="MI"
                                         class="main-page__product product-card j-product-item product-card--hoverable j-content-item"
                                         data-link="class{merge: ~parent.hideOn6 toggle=&#39;product-hide-6&#39;}class{merge: ~parent.hideOn4 toggle=&#39;product-hide-4&#39;}class{merge: ~parent.hideOn2 toggle=&#39;product-hide-2&#39;}"
@@ -549,6 +548,7 @@
                                     <!--/noindex-->
                                     <div class="jqmPopWindow update-browser-popup"></div>
                                     <script src="{% static 'js/popup.js' %}" onerror="reload_page()"></script>  
+                                    <script src="{% static 'js/search.js' %}" onerror="reload_page()"></script>
                                     {% endblock %}
                                     </body>
 

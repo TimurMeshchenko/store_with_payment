@@ -14,7 +14,7 @@ class CatalogView(generic.ListView):
     context_object_name = "products"
 
     def get_queryset(self):
-        return Product.objects.all()
+        return Product.objects.all().order_by('id')
 
 class BasketView(generic.ListView):
     template_name = "basket.html"
@@ -42,9 +42,21 @@ class BasketView(generic.ListView):
         return int(total_price * 100)
 
 def get_product(request):
-    product_name = request.GET.get('product_name')
-    product_object = get_object_or_404(Product, name=product_name)
+    product_id = request.GET.get('product_id')
+    product_object = get_object_or_404(Product, pk=product_id)
     product = product_object.__dict__
     product.pop('_state')
 
     return JsonResponse({"product": product})
+
+def get_products_by_search(request):
+    product_name = request.GET.get('product_name')
+    products_matched = Product.objects.filter(name__icontains=product_name)[:10]
+    products_matched_dict = list()
+
+    for product in products_matched:
+        product_dict = product.__dict__
+        product_dict.pop('_state')
+        products_matched_dict.append(product_dict)
+
+    return JsonResponse({"products": products_matched_dict})
