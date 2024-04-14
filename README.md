@@ -1,3 +1,12 @@
 # store_with_payment
 
-Интернет-магазин, построенный на Django, с оригинальной системой оплаты, основанной на использовании платежной системы Stripe.
+# Настройка postgresql
+
+sudo -u postgres psql
+create database store_with_payment;
+sudo -u postgres psql -d store_with_payment -f database_backups/release_plain.sql
+
+## Запуск
+
+sudo poetry install
+sudo poetry run python manage.py runserver
