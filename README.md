@@ -9,4 +9,4 @@ sudo -u postgres psql -d store_with_payment -f database_backups/release_plain.sq
 ## Запуск
 
 sudo poetry install
-sudo poetry run python manage.py runserver
+sudo poetry run python -m uvicorn remanga_site.asgi:application --reload
