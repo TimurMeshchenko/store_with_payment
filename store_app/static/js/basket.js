@@ -52,26 +52,11 @@ function get_product_html(product) {
                 <img loading="lazy" src="/media/${product['image']}" style="width: 96px;">
             </p>
             <div class="list-item__good-info good-info">
-                <script type="jsv#478^"></script>
-                <script type="jsv/478^"></script>
                 <p class="good-info__title j-product-popup">
                     <span class="good-info__good-name">
-                        <script type="jsv#479^"></script>
                         ${product['name']}
-                        <script type="jsv/479^"></script>
                     </span>
                 </p>
-                <div class="good-info__properties hide">
-                </div>
-                <div class="good-info__seller seller j-suppliers-info hide-mobile" data-nm="12104954"></div>
-                <div class="good-info__properties good-info__properties--variable">
-                </div>
-                <script type="jsv#484^"></script>
-                <script type="jsv/484^"></script>
-                <script type="jsv#923_"></script>
-                <div class="good-info__badge-wrap">
-                </div>
-                <script type="jsv/923_"></script>
             </div>
         </div>
         <div class="list-item__count count">
@@ -87,24 +72,13 @@ function get_product_html(product) {
                 </div>
             </div>
         </div>
-        <script type="jsv#486^"></script>
-        <script type="jsv#924_"></script>
-        <script type="jsv#925_"></script>
         <div class="list-item__price">
             <div class="list-item__price-new" data-link="{formatMoneyAnim priceSumWithCouponAndDiscount}"
                 data-jsv="#490^/490^">${Number(product['price'])}&nbsp;₽</div>
-            <script type="jsv#485^"></script>
-            <script type="jsv#926_"></script>
-            <script type="jsv/926_"></script>
-            <script type="jsv/485^"></script>
             <div class="list-item__btn btn"><button class="btn__del j-basket-item-del" type="button"> <span> Удалить
                     </span> </button> </div>
         </div>
-        <script type="jsv/925_"></script>
-        <script type="jsv/924_"></script>
-        <script type="jsv/486^"></script>
     </div>
-    <script type="jsv/918_"></script>
   </div>`;
 }
 

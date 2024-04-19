@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block css %}
-    <link href="{% static 'css/basket/basket-v3.min.782cbc13532e70c7.css' %}" rel="stylesheet" type="text/css" onerror="reload_page()">
-    <link rel="stylesheet" href="{% static 'css/basket/payment.css' %}" onerror="reload_page()"/>
-    <script src="https://js.stripe.com/v3/" onerror="reload_page()"></script>
-    <script src="{% static 'js/payment.js' %}" defer onerror="reload_page()"></script>
+    <link href="{% static 'css/basket/basket-v3.min.782cbc13532e70c7.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/basket/payment.css' %}"/>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{% static 'js/payment.js' %}" defer></script>
 {% endblock %}
 
 {% block title %}
@@ -20,131 +20,44 @@
                 <div id="app">
                     <div data-link="visible{:containerId == ~router.activeContainer &amp;&amp; !~router.showPreview}"
                         style="display: block;">
-                        <script type="jsv#7^"></script>
-                        <script type="jsv#898_"></script>
-                        <div class="basket-page j-b-lk-basket desktop"
-                            data-link="class{merge: ~wbSettings^displayMode == &#39;d&#39; toggle=&#39;desktop&#39;}class{merge: ~wbSettings^displayMode == &#39;m&#39; toggle=&#39;mobile&#39;}">
-                            <script type="jsv#899_"></script>
+                        <div class="basket-page j-b-lk-basket desktop">
                             <div class="basket-page__blocks-wrap">
-                                <script type="jsv#441^"></script>
-                                <script type="jsv/441^"></script>
-                                <script type="jsv#451^"></script>
-                                <script type="jsv#900_"></script>
-                                <script type="jsv#450^"></script>
-                                <script type="jsv#901_"></script>
                                 <form class="basket-page__basket-form basket-form" id="payment-form"
                                     data-link="class{merge: isBuyItNowMode toggle=&#39;basket-form--buy-now&#39;}class{merge:debtDeliveries toggle=&#39;disable&#39;}">
                                     {%csrf_token%}
                                     <div class="basket-form__content j-basket-form__content">
-                                        <script type="jsv#442^"></script>
-                                        <script type="jsv/442^"></script>
-                                        <script type="jsv#443^"></script>
-                                        <script type="jsv/443^"></script>
                                         <div class="basket-form__basket-section basket-section"
                                             data-link="{include tmpl=&#39;basketListTemplate&#39;}">
-                                            <script type="jsv#910_"></script>
-                                            <script type="jsv#456^"></script>
-                                            <script type="jsv/456^"></script>
                                             <div class="basket-section__header-tabs"
                                                 data-link="class{merge: visibleBalanceTooltip toggle=&#39;basket-section__header-tabs--balance&#39;}">
-                                                <script type="jsv#457^"></script>
-                                                <script type="jsv#911_"></script>
                                                 <h1 class="basket-section__header active"
                                                     data-link="data-count{:totalQuantity}class{merge: totalAvailableItemsCount == 0 toggle=&#39;basket-section__header--no-margin&#39;}"
                                                     >Корзина</h1>
-                                                <script type="jsv/911_"></script>
-                                                <script type="jsv/457^"></script>
-                                                <script type="jsv#458^"></script>
-                                                <script type="jsv/458^"></script>
-                                                <script type="jsv#459^"></script>
-                                                <script type="jsv/459^"></script>
                                             </div>
                                             <div class="basket-section__basket-list basket-list">
                                                 <div class="basket-list__accordion accordion"
                                                     data-link="class{merge: !!_hidden toggle=&#39;closed&#39; }">
-                                                    <script type="jsv#463^"></script>
-                                                    <script type="jsv/463^"></script>
                                                     <div class="accordion__body j-b-list-content">
                                                         <div class="accordion__list">
-                                                            <script type="jsv#465^"></script>
-                                                            <script type="jsv#913_"></script>
                                                             <div data-link="         {on &#39;click&#39; &#39;.j-cb-include&#39; ~routerViewModel.toggleIncludeInOrder}         {on &#39;click&#39; &#39;.minus, .plus&#39; ~routerViewModel.setQuantity }         {on &#39;change&#39; &#39;.j-tb-qnt&#39; ~routerViewModel.updateQuantity }         {on &#39;input&#39; &#39;.j-tb-qnt&#39; ~routerViewModel.replaceValue}         {on &#39;click&#39; &#39;.j-basket-item-postpone&#39; ~routerViewModel.postponeBasketItem }         {on &#39;click&#39; &#39;.j-basket-item-del&#39; ~routerViewModel.deleteBasketItem }         {on &#39;click&#39; &#39;.j-product-popup&#39; ~routerViewModel.showProductCardPopup}        "
                                                                 data-jsv="#471^/471^#472^/472^#473^/473^#474^/474^#475^/475^#476^/476^#477^/477^">
-                                                                <script type="jsv#464^"></script>
-                                                                <script type="jsv#914_"></script>
-                                                                <script type="jsv#915_"></script>
-                                                                <script type="jsv/915_"></script>
-                                                                <script type="jsv/914_"></script>
-                                                                <script type="jsv/464^"></script>
                                                             </div>
-                                                            <script type="jsv/913_"></script>
-                                                            <script type="jsv/465^"></script>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <script type="jsv/910_"></script>
-                                        </div>
-                                        <script type="jsv#444^"></script>
-                                        <script type="jsv/444^"></script>
-                                        <div class="basket-form__fixed-bottom fixed-bottom j-fixed-bottom"
-                                            data-link="{include tmpl=&#39;basketFixedFooter&#39;}class{merge:isBuyItNowMode toggle=&#39;fixed-bottom--nailed&#39;}"
-                                            style="display: none;">
-                                            <script type="jsv#950_"></script>
-                                            <div class="fixed-bottom__content-wrap">
-                                                <div class="fixed-bottom__content">
-                                                    <script type="jsv#542^"></script>
-                                                    <script type="jsv#951_"></script>
-                                                    <div class="fixed-bottom__summary summary">
-                                                        <div class="summary-count">
-                                                            <script type="jsv#540^"></script>1
-                                                            <script type="jsv/540^"></script>
-                                                            <script type="jsv#541^"></script>товар
-                                                            <script type="jsv/541^"></script>
-                                                        </div>
-                                                        <div class="summary-price"
-                                                            data-link="{formatMoneyAnim (totalPriceWithCouponPersDiscAndDeliveryPrice) converter=&#39;basketPriceWithCurrencyV2&#39;}"
-                                                            data-jsv="#544^/544^">414&nbsp;₽</div>
-                                                    </div>
-                                                    <script type="jsv/951_"></script>
-                                                    <script type="jsv/542^"></script>
-                                                    <script type="jsv#543^"></script>
-                                                    <script type="jsv#952_"></script> <button
-                                                        class="fixed-bottom__btn-to-checkout btn-to-checkout btn-main-sm"
-                                                        type="button"
-                                                        data-link="{on scrollToPay &#39;.j-b-basket-footer&#39;}"
-                                                        data-jsv="#545^/545^"><span class="btn-to-checkout__text1">К
-                                                            оформлению заказа</span><span
-                                                            class="btn-to-checkout__text2">К оформлению</span></button>
-                                                    <script type="jsv/952_"></script>
-                                                    <script type="jsv/543^"></script>
-                                                </div>
-                                            </div>
-                                            <script type="jsv/950_"></script>
                                         </div>
                                     </div>
                                     <div class="basket-form__sidebar sidebar">
                                         <div class="sidebar__sticky-wrap">
                                             <div class="j-b-basket-footer"
                                                 data-link="{include #data tmpl=&#39;basketFooter&#39;}">
-                                                <script type="jsv#953_"></script>
                                                 <div class="basket-section basket-order">
                                                     <div class="basket-order__b-top b-top">
-                                                        <script type="jsv#551^"></script>
-                                                        <script type="jsv/551^"></script>
-                                                        <script type="jsv#552^"></script>
-                                                        <script type="jsv/552^"></script>
-                                                        <script type="jsv#553^"></script>
-                                                        <script type="jsv/553^"></script>
-                                                        <script type="jsv#554^"></script>
-                                                        <script type="jsv/554^"></script>
                                                         <p class="b-top__total line"> <span>Итого</span> <span> <span
                                                                     data-link="{formatMoneyAnim (totalPriceWithCouponPersDiscAndDeliveryPrice - (!postpay() &amp;&amp; payByBalance &lt; 0 ? payByBalance : 0)) + totalPaymentFeeAmount converter=&#39;basketPriceWithCurrencyV2&#39;}"
                                                                     data-jsv="#560^/560^" class="total_price">414&nbsp;₽</span> </span> </p>
                                                     </div>
-                                                    <script type="jsv#555^"></script>
-                                                    <script type="jsv#955_"></script>
-                                                    <script type="jsv#956_"></script>
                                                     <div class="basket-order__b-btn b-btn">
                                                             <div id="payment-element">
                                                                 <!--Stripe.js injects the Payment Element-->
@@ -155,42 +68,19 @@
                                                                 name="ConfirmOrderByRegisteredUser" data-jsv="#561^/561^">
                                                                 Заказать </button>
                                                             <div id="payment-message" class="hidden"></div>
-
                                                     </div>
-                                                    <script type="jsv/956_"></script>
-                                                    <script type="jsv/955_"></script>
-                                                    <script type="jsv/555^"></script>
-                                                    <script type="jsv#557^"></script>
-                                                    <script type="jsv/557^"></script>
                                                 </div>
-                                                <script type="jsv/953_"></script>
                                             </div>
-                                            <script type="jsv#446^"></script>
-                                            <script type="jsv/446^"></script>
                                         </div>
                                     </div>
                                 </form>
-                                <script type="jsv#447^"></script>
-                                <script type="jsv#904_"></script>
-                                <script type="jsv#905_"></script>
                             </div>
-                            <div class="loader" data-link="visible{:modify}" style="display: none;"></div>
                         </div>
-                        <script type="jsv/899_"></script>
-                        <script type="jsv/898_"></script>
-                        <script type="jsv/7^"></script>
                     </div>
-                    <script type="jsv/8_"></script>
-                    <script type="jsv/3_"></script>
-                    <script type="jsv/1_"></script>
                 </div>
-
-                <button class="btn-quick-nav j-quicknav" type="button" style="display: none;">К началу страницы</button>
-
-
             </div>
 
         </main>
     </div>
-    <script src="{% static 'js/basket.js' %}" onerror="reload_page()"></script>
+    <script src="{% static 'js/basket.js' %}"></script>
 {% endblock %}

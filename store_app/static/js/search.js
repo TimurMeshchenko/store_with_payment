@@ -40,12 +40,6 @@ function get_autocomplete_content() {
                 <div class="autocomplete__scroll-container">
                     <ul class="autocomplete__list autocomplete__list--grouped" data-jsv-df="">                                        
                     </ul>
-                    <script type="jsv/1264_"></script>
-                    <script type="jsv/1263_"></script>
-                    <script type="jsv/1262_"></script>
-                    <script type="jsv/1261_"></script>
-                    <script type="jsv/1046_"></script>
-                    <script type="jsv/498^"></script>
                 </div>
             </div>
     `;
@@ -56,7 +50,6 @@ function get_autocomplete_item(product) {
         <li data-nm-id="${product.id}" class="autocomplete__item j-suggest autocomplete__item--category"
             data-link="class{merge: selected toggle='selected'}" data-type="category">
             <p class="autocomplete__text"> <span class="autocomplete__phrase">${product.name}</span>
-                <script type="jsv#1267_"></script> 
             </p> <img class="autocomplete__category-logo"
                 src=/media/${product.image} width="36"
                 height="48">
