@@ -43,7 +43,7 @@ async function add_products_html() {
 
 async function get_products_page_html() {
     const response = await fetch(
-      `${window.location.href}api/get_products_page?offset=${offset}&limit=${limit}`
+      `${window.location.href}/api/get_products_page?offset=${offset}&limit=${limit}`
     );
     const products_page_html_dict = await response.json();
     const products_page_html = products_page_html_dict["products"];

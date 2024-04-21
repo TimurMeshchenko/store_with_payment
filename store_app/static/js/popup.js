@@ -62,7 +62,7 @@ async function get_popup_html(product) {
                                                 <div class="zoom-image-container">
                                                     <img class="j-zoom-image" width="900" height="1200"
                                                         loading="lazy"
-                                                        src=/media/${
+                                                        src=/store/media/${
                                                           product.image
                                                         }
                                                         data-jsv="#701^/701^">

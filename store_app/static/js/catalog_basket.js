@@ -47,7 +47,7 @@ async function save_product_id(event) {
 async function get_product(product_div) {
     const product_id = product_div.dataset.nmId;
     const response = await fetch(
-      `${window.location.href}api/get_product?product_id=${product_id}`
+      `${window.location.href}/api/get_product?product_id=${product_id}`
     );
     const product_dict = await response.json();
     const product = product_dict["product"];
@@ -57,7 +57,7 @@ async function get_product(product_div) {
 function change_button_in_basket(basket_button) {
     basket_button.textContent = "В корзине";
     basket_button.style.backgroundColor = "gray";
-    basket_button.href = "basket";
+    basket_button.href = "/store/basket";
 }
 
 function increase_basket_counter() {

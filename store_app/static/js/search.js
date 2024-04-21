@@ -15,7 +15,7 @@
 
   async function get_matched_products(input_value) {
     const response = await fetch(
-      `${window.location.href}api/get_products_by_search?product_name=${input_value}`
+      `${window.location.href}/api/get_products_by_search?product_name=${input_value}`
     );
     const product_dict = await response.json();
     const products = product_dict["products"];
@@ -51,7 +51,7 @@ function get_autocomplete_item(product) {
             data-link="class{merge: selected toggle='selected'}" data-type="category">
             <p class="autocomplete__text"> <span class="autocomplete__phrase">${product.name}</span>
             </p> <img class="autocomplete__category-logo"
-                src=/media/${product.image} width="36"
+                src=/store/media/${product.image} width="36"
                 height="48">
         </li>    
     `;

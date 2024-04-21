@@ -49,12 +49,14 @@ function get_product_html(product) {
     <div class="list-item__wrap" style="display: flex;">
         <div class="list-item__good">
             <p class="img-plug list-item__good-img j-product-popup">
-                <img loading="lazy" src="/media/${product['image']}" style="width: 96px;">
+                <img loading="lazy" src="/store/media/${
+                  product["image"]
+                }" style="width: 96px;">
             </p>
             <div class="list-item__good-info good-info">
                 <p class="good-info__title j-product-popup">
                     <span class="good-info__good-name">
-                        ${product['name']}
+                        ${product["name"]}
                     </span>
                 </p>
             </div>
@@ -65,7 +67,9 @@ function get_product_html(product) {
                     <button type="button" class="count__minus minus"
                         data-link="class{merge: quantity &lt;= minQuantity toggle=&#39;disabled&#39;}"
                         aria-label="Уменьшить количество"></button>
-                    <p class="in_tb j-tb-qnt count__numeric ignore">${product['count']}</p>
+                    <p class="in_tb j-tb-qnt count__numeric ignore">${
+                      product["count"]
+                    }</p>
                     <button type="button" class="count__plus plus"
                         data-link="class{merge: quantity == maxQuantity toggle=&#39;disabled&#39;}"
                         aria-label="Увеличить количество"></button>
@@ -74,7 +78,7 @@ function get_product_html(product) {
         </div>
         <div class="list-item__price">
             <div class="list-item__price-new" data-link="{formatMoneyAnim priceSumWithCouponAndDiscount}"
-                data-jsv="#490^/490^">${Number(product['price'])}&nbsp;₽</div>
+                data-jsv="#490^/490^">${Number(product["price"])}&nbsp;₽</div>
             <div class="list-item__btn btn"><button class="btn__del j-basket-item-del" type="button"> <span> Удалить
                     </span> </button> </div>
         </div>
