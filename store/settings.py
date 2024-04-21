@@ -11,16 +11,19 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2+^l8)h9=tx#!tcr_@@rc!b(80!wk!*d3=ypm$o#n-!yq$+%9r'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -77,11 +80,11 @@ WSGI_APPLICATION = 'store.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "store_with_payment",
-        "USER": "postgres",
-        "PASSWORD": "Qewads",
-        "HOST": "localhost",
-        'PORT': 5432,
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASS"),
+        "HOST": os.getenv("DB_HOST"),
+        'PORT': os.getenv("DB_PORT"),
     }
 }
 
@@ -130,4 +133,4 @@ MEDIA_ROOT = Path(BASE_DIR) / "store_app" / "media"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STRIPE_SECRET_KEY = 'sk_test_51OWxceHpvpTxUukx6WPFwPRqKtn3VQp4FjrlNJ894I0m7ZaUd7CIa0mGcs03QIJj0xOBOoaSiK9ld8intHIAQzjt00b6YtCeMw'
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")

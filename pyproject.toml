@@ -12,6 +12,7 @@ psycopg2-binary = "^2.9.9"
 stripe = "^9.1.0"
 pillow = "^10.3.0"
 uvicorn = "^0.29.0"
+python-dotenv = "^1.0.1"
 
 
 [build-system]
