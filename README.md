@@ -8,6 +8,6 @@ sudo -u postgres psql -d store_with_payment -f database_backups/release_plain.sq
 
 ## Запуск
 
-sudo poetry install
-sudo poetry run python -m uvicorn store.asgi:application --reload --port 8001
-sudo poetry run ./run_with_reload.sh
+poetry install
+poetry run python -m uvicorn store.asgi:application --reload --port 8001
+poetry run ./run_with_reload.sh
