@@ -4374,7 +4374,6 @@ html.adaptive body {
 @media (min-width: 1024px) {
   .header__search-catalog {
     margin-right: 20px;
-    margin-left: 12px;
   }
 }
 .header__balance {
@@ -4500,11 +4499,11 @@ html.adaptive body {
   justify-content: center;
   align-items: center;
   width: 58px;
-  height: 58px;
+  height: 50px;
   background: 0 0;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 12px;
-  margin-left: 20px;
+  margin-left: 25%;
   transition: border-color 0.3s ease 0s;
 }
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
@@ -4535,6 +4534,7 @@ html.adaptive body {
   background: #fff;
   border-radius: 3px;
   transform-origin: center left;
+  background-color: black;
 }
 .nav-element__burger-line::after,
 .nav-element__burger-line::before {
@@ -4552,9 +4552,11 @@ html.adaptive body {
 }
 .nav-element__burger-line::before {
   top: -9px;
+  background-color: black;
 }
 .nav-element__burger-line::after {
   bottom: -9px;
+  background-color: black;
 }
 .nav-element__logo {
   display: flex;
@@ -4600,7 +4602,6 @@ html.adaptive body {
   display: block;
   width: 24px;
   height: 24px;
-  margin: 0 auto 6px;
   position: relative;
   background-repeat: no-repeat;
   background-position: center;
@@ -4639,7 +4640,6 @@ html.adaptive body {
 .search-catalog {
   position: relative;
   margin-right: 25%;
-  margin-left: 25%;
 }
 .search-catalog--photo .search-catalog__btn-wrap {
   display: none;
@@ -6612,4 +6612,10 @@ button.swiper-pagination-bullet {
   .header__search-catalog {
     flex-grow: 0 !important;
   }
+}
+@media (max-width: 700px) {
+    .search-catalog, .nav-element__burger {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
 }
