@@ -10,6 +10,9 @@ poetry install
 poetry run python -m uvicorn store.asgi:application --reload --port 8001
 poetry run ./run_with_reload.sh
 
+Прод:
+poetry run python -m uvicorn store.asgi:application --port 8001
+
 # Webpack optimization
 
 docker build -f Dockerfile.webpack -t store_webpack .
